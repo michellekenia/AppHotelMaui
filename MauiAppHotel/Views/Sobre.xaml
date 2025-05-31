@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.Sobre"
+             Title="Sobre">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15" BackgroundColor="#E6E6FA">
+
+            <Label Text="Sobre este aplicativo" 
+                   FontSize="24" 
+                   HorizontalOptions="Center"
+                   TextColor="#4B0082"
+                   FontAttributes="Bold"/>
+
+            <Label Text="Aplicativo desenvolvido para gestão de hospedagem." 
+                   FontSize="16" 
+                   TextColor="#6A5ACD"/>
+
+            <Label Text="Desenvolvedor:" 
+                   FontSize="18" 
+                   FontAttributes="Bold"
+                   TextColor="#4B0082"/>
+            <Label Text="Michelle Kenia" 
+                   FontSize="16" 
+                   TextColor="#483D8B"/>
+
+            <Label Text="Ano de desenvolvimento:" 
+                   FontSize="18" 
+                   FontAttributes="Bold"
+                   TextColor="#4B0082"/>
+            <Label Text="2025" 
+                   FontSize="16" 
+                   TextColor="#483D8B"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

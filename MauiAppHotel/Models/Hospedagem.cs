@@ -2,7 +2,7 @@
 {
     public class Hospedagem
     {
-        public Quarto QuartoSelecionado { get; set; }
+        public Quarto QuartoSelecionado { get; set; } = null!;
         public int QntAdultos { get; set; }
         public int QntCriancas { get; set; }
         public DateTime DataCheckIn { get; set; }
@@ -15,12 +15,10 @@
         {
             get
             {
-                double valor_adultos = QntAdultos * QuartoSelecionado.ValorDiariaAdulto;
-                double valor_criancas = QntCriancas * QuartoSelecionado.ValorDiariaCrianca;
+                double valor_adultos = QntAdultos * (QuartoSelecionado?.ValorDiariaAdulto ?? 0);
+                double valor_criancas = QntCriancas * (QuartoSelecionado?.ValorDiariaCrianca ?? 0);
 
-                double total = (valor_adultos + valor_criancas) * Estadia;
-
-                return total;
+                return (valor_adultos + valor_criancas) * Estadia;
             }
         }
     }

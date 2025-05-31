@@ -20,6 +20,11 @@
 
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
+        private async void OnSobreClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("Sobre");
+        }
+
     }
 
 }

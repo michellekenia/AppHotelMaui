@@ -4,21 +4,19 @@ namespace MauiAppHotel.Views;
 
 public partial class ContratacaoHospedagem : ContentPage
 {
-    App PropriedadesApp;
-
     public ContratacaoHospedagem()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
-        PropriedadesApp = (App)Application.Current;
+        // Carregar lista de quartos no Picker
+        List<Quarto> quartos = new List<Quarto>
+        {
+            new Quarto { Descricao = "Suíte Luxo", ValorDiariaAdulto = 200, ValorDiariaCrianca = 100 },
+            new Quarto { Descricao = "Suíte Simples", ValorDiariaAdulto = 150, ValorDiariaCrianca = 80 },
+            new Quarto { Descricao = "Suíte Família", ValorDiariaAdulto = 250, ValorDiariaCrianca = 120 }
+        };
 
-        pck_quarto.ItemsSource = PropriedadesApp.lista_quartos;
-
-        dtpck_checkin.MinimumDate = DateTime.Now;
-        dtpck_checkin.MaximumDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, DateTime.Now.Day);
-
-        dtpck_checkout.MinimumDate = dtpck_checkin.Date.AddDays(1);
-        dtpck_checkout.MaximumDate = dtpck_checkin.Date.AddMonths(6);
+        pck_quarto.ItemsSource = quartos;
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
@@ -38,7 +36,6 @@ public partial class ContratacaoHospedagem : ContentPage
             {
                 BindingContext = h
             });
-
         }
         catch (Exception ex)
         {
@@ -48,11 +45,15 @@ public partial class ContratacaoHospedagem : ContentPage
 
     private void dtpck_checkin_DateSelected(object sender, DateChangedEventArgs e)
     {
-        DatePicker elemento = sender as DatePicker;
-
-        DateTime data_selecionada_checkin = elemento.Date;
+        DateTime data_selecionada_checkin = e.NewDate;
 
         dtpck_checkout.MinimumDate = data_selecionada_checkin.AddDays(1);
         dtpck_checkout.MaximumDate = data_selecionada_checkin.AddMonths(6);
     }
+
+    private async void OnSobreClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("Sobre");
+    }
+
 }
